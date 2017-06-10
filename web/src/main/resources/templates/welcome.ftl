@@ -19,15 +19,21 @@
 		        <td data-bind="text: surname"></td>
 		        <td data-bind="text: identity"></td>
 		        <td>
-		        	<button data-bind="click: $root.editPerson" 
-		        		class="btn btn-outline-danger"
+	        		<button data-bind="click: $root.editPerson" 
+		        		class="btn btn-primary"
 		        		data-toggle="modal"
 		        		data-target="#myModal">
-									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>		        			
-		        		</button>
+						 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>		        			
+		        	</button>
+	        		<button data-bind="click: $root.showPerson" 
+		        		class="btn btn-primary"
+		        		data-toggle="modal" 
+		        		data-target="#showModal">
+						 <span class="glyphicon glyphicon glyphicon-zoom-out" aria-hidden="true"></span>		        			
+		        	</button>
 		        	<button data-bind="click: $root.removePerson" 
 	        			class="btn btn-danger">
-									<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>		        			
+						<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>		        			
 		        	</button>
 		        </td>
 		    </tr> 
@@ -36,6 +42,38 @@
 		</table>
 	</div>
 	
+<!-- Modal -->
+<div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="showModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="showModalLabel"> Person </h4>
+      </div>
+      <div class="modal-body">
+		<div class="panel-body">
+			<blockquote>
+			  Identity :<p data-bind="text: person().identity"></p>
+			</blockquote>
+			<blockquote>
+			  Name :<p data-bind="text: person().name"></p>
+			</blockquote>
+			<blockquote>
+			  Surname :<p data-bind="text: person().surname"></p>
+			</blockquote>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bind="click: savePerson" >Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -77,6 +115,10 @@
     </div>
   </div>
 </div>
+
+
+
+
   <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="assets/js/knockout-3.4.2.js"></script>
   <script type="text/javascript" src="assets/js/tether.min.js"></script>

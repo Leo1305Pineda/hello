@@ -76,6 +76,11 @@ function ReservationsViewModel() {
   self.editPerson = function(){
     self.person(new Person(this));
   }
+  
+  self.showPerson = function (){
+	  console.log(this);
+	  self.person(this);
+  }
 
   self.removePerson=function(){
     url = "/people/" +this.id
