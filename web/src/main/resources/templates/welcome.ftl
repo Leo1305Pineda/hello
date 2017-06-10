@@ -4,7 +4,7 @@
 	<title>Hello World </title>
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 </head>
-<body>
+<body> 
   <div class="container">
   	<h1>Person's List </h1>
 		<button data-bind="click: addPerson" class="btn btn-primary" data-toggle="modal" data-target="#myModal">+</button>
@@ -45,22 +45,30 @@
         <h4 class="modal-title" id="myModalLabel">Add a Person </h4>
       </div>
       <div class="modal-body">
-				<div class="panel-body">
-		     	<form >
-					  <div class="form-group">
-					    <label>Name</label>
-					    <input type="text" class="form-control" data-bind="value: person().name" >
-					  </div>
-					  <div class="form-group">
-					    <label>Surname</label>
-					    <input type="text" class="form-control" data-bind="value: person().surname" >
-					  </div>
-					  <div class="form-group">
-					    <label>Identity</label>
-					    <input type="text" class="form-control" data-bind="value: person().identity" >
-					  </div>
-	      	</form>
+		<div class="panel-body">
+			<div data-bind="if: formError">
+				<div class="alert alert-danger" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+					<b class="bg-danger" data-bind="text: formError"></b>				
 				</div>
+	        </div>
+		  	<form>
+			  <div class="form-group">
+			    <label>Name</label>
+			    <input type="text" class="form-control" data-bind="value: person().name" >
+			  </div>
+			  <div class="form-group">
+			    <label>Surname</label>
+			    <input type="text" class="form-control" data-bind="value: person().surname" >
+			  </div>
+			  <div class="form-group">
+			    <label>Identity</label>
+			    <input type="text" class="form-control" data-bind="value: person().identity" >
+			  </div>
+	      	</form>
+		</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
